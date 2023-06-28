@@ -15,9 +15,11 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 # Add code to load in the data.
 logging.info('Loading data')
 #data = pd.read_csv(os.getcwd()[:-8] + "/data/census.csv", skipinitialspace=True)
-data = pd.read_csv("../data/census.csv", skipinitialspace=True)
+#data = pd.read_csv("../data/census.csv", skipinitialspace=True)
 
 #print(data.head())
+data = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/census.csv"), skipinitialspace=True) 
+#print(str(os.path.dirname(__file__)))
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 logging.info('Splitting data into train and test set')
@@ -67,5 +69,6 @@ print("Fbeta: " + str(fbeta))
 # Save model
 logging.info('Saving machine learning model')
 #model_path = os.getcwd()[:-8] + "/model/lr_model.joblib"
-model_path = "../model/lr_model.joblib"
+model_path = os.path.join(os.path.dirname(__file__), "../model/lr_model.joblib") 
+#model_path = "../model/lr_model.joblib"
 joblib.dump(lr_model, model_path)
