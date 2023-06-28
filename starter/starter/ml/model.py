@@ -1,6 +1,7 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
-
+import joblib
+import os
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -64,3 +65,31 @@ def inference(model, X):
     preds = model.predict(X)
     
     return preds
+
+def save_model_and_encoder(model, encoder, lb, path):
+    """ Saves trained machine learning model and encoder.
+
+    Inputs
+    ------
+    model : Logistic Regression
+        Trained machine learning model.
+    encoder : sklearn.preprocessing._encoders.OneHotEncoder
+        Trained OneHotEncoder
+    lb : sklearn.preprocessing._label.LabelBinarizer
+        Trained LabelBinarizer
+    path : string
+        Path for saving the model, encoder, and label binarizer
+    Returns
+    -------
+    None
+    """
+    
+    model_path = os.path.join(path, "../model/lr_model.joblib") 
+    joblib.dump(model, model_path)
+    
+    encoder_path = os.path.join(path, "../model/encoder.joblib") 
+    joblib.dump(encoder, encoder_path)
+    
+    lb_path = os.path.join(path, "../model/label_binarizer.joblib") 
+    joblib.dump(lb, lb_path)    
+    
