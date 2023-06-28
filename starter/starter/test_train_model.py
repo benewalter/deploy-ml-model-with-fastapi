@@ -22,7 +22,7 @@ cat_features = [
 
 @pytest.fixture
 def data():
-    df = pd.read_csv(os.getcwd()[:-8] + "/data/census.csv", skipinitialspace=True)
+    df = pd.read_csv("../data/census.csv", skipinitialspace=True)
     return df
 
 def test_process_data(data):
