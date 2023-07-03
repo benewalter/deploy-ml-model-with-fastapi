@@ -1,6 +1,6 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
-#from starter.ml.data import process_data
+from .data import *
 import joblib
 import os
 import pandas as pd
