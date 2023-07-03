@@ -18,6 +18,7 @@ Overall performance metrics:
 - Precision: 0.72
 - Recall: 0.27
 - F1: 0.40
+  
 Information on the model performance on different slices of data can be found under https://github.com/benewalter/deploy-ml-model-with-fastapi/blob/master/starter/starter/slice_output.txt.
 
 
