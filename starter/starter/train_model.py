@@ -2,7 +2,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference, save_model_and_encoder, load_model_and_encoder
+from ml.model import train_model, compute_model_metrics, inference, save_model_and_encoder, load_model_and_encoder, compute_model_metrics_on_slices
 import joblib
 import os
 import logging
@@ -65,6 +65,10 @@ precision, recall, fbeta = compute_model_metrics(y_test, predictions)
 print("Precision: " + str(precision))
 print("Recall: " + str(recall))
 print("Fbeta: " + str(fbeta))
+
+# Check results on slices of data
+logging.info('Checking inference results on slices of data')
+compute_model_metrics_on_slices(test, cat_features, encoder, lb, lr_model)
 
 # Save model, encoder, and label binarizer
 logging.info('Saving machine learning model, encoder, and label binarizer')

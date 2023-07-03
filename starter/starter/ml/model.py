@@ -1,7 +1,9 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
+from ml.data import process_data
 import joblib
 import os
+import pandas as pd
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -122,3 +124,49 @@ def load_model_and_encoder(model_path, encoder_path, lb_path):
     lb = joblib.load(lb_path)  
     
     return model, encoder, lb
+
+def compute_model_metrics_on_slices(df, cat_features, encoder, lb, model):
+    """
+    Validates the trained machine learning model on data slices using precision, recall, and F1.
+
+    Inputs
+    ------
+    df : Pandas dataframe
+        Test data based on which to do the evaluation.
+    cat_features : list
+        List of categorical features.
+    model : Logistic Regression
+        Trained machine learning model.
+    encoder : sklearn.preprocessing._encoders.OneHotEncoder
+        Trained OneHotEncoder
+    lb : sklearn.preprocessing._label.LabelBinarizer
+        Trained LabelBinarizer
+    Returns
+    -------
+    None
+    """
+    
+    performance_on_slices = {}
+    
+    for feature in cat_features:
+        for cls in df[feature].unique():
+            data_slice = df.loc[df[feature] == cls]
+            
+            X_test, y_test, _, _ = process_data(
+                                    data_slice, categorical_features=cat_features, label="salary", 
+                                        encoder= encoder, lb = lb,training=False
+                                    )
+
+            predictions = inference(model, X_test)
+            
+            precision, recall, fbeta = compute_model_metrics(y_test, predictions)
+            print(str(feature) + " " + str(cls))
+            print(precision)
+            print(recall)
+            print(fbeta)
+            
+            performance_on_slices[feature + "__" + cls] = compute_model_metrics(y_test, predictions)
+            
+    performance_on_slices = pd.DataFrame(performance_on_slices).T
+    performance_on_slices.columns = ['Precision', 'Recall', 'Fbeta']
+    performance_on_slices.to_csv(r'slice_output.txt', header=True, index=True, sep=' ', mode='a')
