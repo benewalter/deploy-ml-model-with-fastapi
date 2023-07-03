@@ -3,10 +3,10 @@ import os
 
 print(os.getcwd())
 
-#from starter.ml.data import process_data
-#from starter.ml.model import train_model
-from ml.data import *
-from ml.model import *
+from starter.ml.data import process_data
+from starter.ml.model import train_model
+#from ml.data import *
+#from ml.model import *
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
