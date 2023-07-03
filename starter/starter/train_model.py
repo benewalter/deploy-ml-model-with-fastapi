@@ -2,7 +2,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference, save_model_and_encoder
+from ml.model import train_model, compute_model_metrics, inference, save_model_and_encoder, load_model_and_encoder
 import joblib
 import os
 import logging
@@ -74,3 +74,12 @@ logging.info('Saving machine learning model, encoder, and label binarizer')
 #joblib.dump(lr_model, model_path)
 path = os.path.dirname(__file__)
 save_model_and_encoder(lr_model, encoder, lb, path)
+
+
+# Load model, encoder, and label binarizer
+logging.info('Loading machine learning model, encoder, and label binarizer')
+
+model_path = os.path.join(path, "../model/lr_model.joblib") 
+encoder_path = os.path.join(path, "../model/encoder.joblib") 
+lb_path = os.path.join(path, "../model/label_binarizer.joblib")
+lr_model, encoder, lb = load_model_and_encoder(model_path, encoder_path, lb_path)

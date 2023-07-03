@@ -67,7 +67,7 @@ def inference(model, X):
     return preds
 
 def save_model_and_encoder(model, encoder, lb, path):
-    """ Saves trained machine learning model and encoder.
+    """ Saves trained machine learning model and encoder and label binarizer.
 
     Inputs
     ------
@@ -93,3 +93,32 @@ def save_model_and_encoder(model, encoder, lb, path):
     lb_path = os.path.join(path, "../model/label_binarizer.joblib") 
     joblib.dump(lb, lb_path)    
     
+
+def load_model_and_encoder(model_path, encoder_path, lb_path):
+    """ Loads trained machine learning model and encoder and label binarizer.
+
+    Inputs
+    ------
+    model_path : string
+        Path to trained machine learning model.
+    encoder_path : string
+        Path to trained OneHotEncoder
+    lb_path : string
+        Path to trained LabelBinarizer
+    Returns
+    -------
+    model : model object
+        Trained machine learning model
+    encoder: sklearn.preprocessing._encoders.OneHotEncoder
+        Trained OneHotEncoder
+    lb : sklearn.preprocessing._label.LabelBinarizer
+        Trained LabelBinarizer
+    """
+    
+    model = joblib.load(model_path)
+    
+    encoder = joblib.load(encoder_path)
+    
+    lb = joblib.load(lb_path)  
+    
+    return model, encoder, lb
