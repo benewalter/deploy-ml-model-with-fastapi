@@ -1,4 +1,5 @@
-Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
+Link to Heroku app: https://udacity-salary-prediction-94c031866332.herokuapp.com/
+Link to Github repository: https://github.com/benewalter/deploy-ml-model-with-fastapi
 
 # Environment Set up
 * Download and install conda if you don’t have it already.
