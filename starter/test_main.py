@@ -60,7 +60,7 @@ def test_post_high_salary():
         "native-country": "United-States",
     }
 
-    response = client.post("/inference", data=json.dumps(data))
+    response = client.post("/inference/", data=json.dumps(data))
     prediction = response.json()
     
     assert response.status_code == 200
