@@ -6,8 +6,10 @@ from pydantic import BaseModel, Field
 import pandas as pd
 #from starter.ml.data import process_data
 #from starter.ml.model import inference, load_model_and_encoder
-from starter.starter.ml.data import process_data
-from starter.starter.ml.model import inference, load_model_and_encoder
+import sys
+sys.path.insert(0, "starter/starter")
+from ml.data import process_data
+from ml.model import inference, load_model_and_encoder
 
 # Declare the data object with its components and their type.
 class InferenceData(BaseModel):
