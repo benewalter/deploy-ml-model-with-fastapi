@@ -4,8 +4,10 @@ from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 import pandas as pd
-from starter.ml.data import process_data
-from starter.ml.model import inference, load_model_and_encoder
+#from starter.ml.data import process_data
+#from starter.ml.model import inference, load_model_and_encoder
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import inference, load_model_and_encoder
 
 # Declare the data object with its components and their type.
 class InferenceData(BaseModel):
