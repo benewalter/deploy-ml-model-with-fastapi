@@ -44,19 +44,19 @@ def test_post_low_salary():
 # Test post high salary
 def test_post_high_salary():
     data = {
-        "age": 50,
+        "age": 45,
         "workclass": "Private",
-        "fnlgt": 168212,
+        "fnlgt": 148995,
         "education": "Doctorate",
         "education-num": 16,
-        "marital-status": "Married-civ-spouse",
+        "marital-status": "Never-married",
         "occupation": "Prof-specialty",
-        "relationship": "Husband",
+        "relationship": "Not-in-family",
         "race": "White",
         "sex": "Male",
-        "capital-gain": 1902,
+        "capital-gain": 99999,
         "capital-loss": 0,
-        "hours-per-week": 65,
+        "hours-per-week": 30,
         "native-country": "United-States",
     }
 
