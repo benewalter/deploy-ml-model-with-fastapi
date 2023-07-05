@@ -41,7 +41,7 @@ def test_post_low_salary():
     assert prediction == [0]
     
     
-# Test post low salary
+# Test post high salary
 def test_post_high_salary():
     data = {
         "age": 40,
@@ -64,4 +64,4 @@ def test_post_high_salary():
     prediction = response.json()
     
     assert response.status_code == 200
-    assert prediction == [0]
+    assert prediction == [1]
