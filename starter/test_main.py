@@ -44,9 +44,9 @@ def test_post_low_salary():
 # Test post high salary
 def test_post_high_salary():
     data = {
-        "age": 40,
+        "age": 37,
         "workclass": "Private",
-        "fnlgt": 193524,
+        "fnlgt": 51264,
         "education": "Doctorate",
         "education-num": 16,
         "marital-status": "Married-civ-spouse",
@@ -56,8 +56,8 @@ def test_post_high_salary():
         "sex": "Male",
         "capital-gain": 0,
         "capital-loss": 0,
-        "hours-per-week": 60,
-        "native-country": "United-States",
+        "hours-per-week": 99,
+        "native-country": "France",
     }
 
     response = client.post("/inference/", data=json.dumps(data))
